@@ -13,8 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Deploy to Server
+      - name: Set up SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          ssh -i $SSH_PRIVATE_KEY anton@64.227.103.202 'cd /idleworkshop.git && git pull origin main && sudo chown -R www-data:www-data /var/www/idleworkshop.com/html'
+          # Create the SSH directory
+          mkdir -p ~/.ssh
+          # Save the SSH key in the correct location
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          # Secure permissions for the SSH key
+          chmod 600 ~/.ssh/id_rsa
+          # Add your server to known_hosts to prevent verification issues
+          ssh-keyscan -H 64.227.103.202 >> ~/.ssh/known_hosts
+
+      - name: Deploy to Server
+        run: |
+          ssh -i ~/.ssh/id_rsa anton@64.227.103.202 'cd /var/www/idleworkshop.com/html && git pull origin main && sudo chown -R www-data:www-data /var/www/idleworkshop.com/html'
