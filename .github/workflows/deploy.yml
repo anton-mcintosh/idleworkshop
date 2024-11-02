@@ -24,5 +24,5 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no anton@64.227.103.202 'cd /var/www/idleworkshop.com/html && git pull origin main && sudo chown -R www-data:www-data /var/www/idleworkshop.com/html'
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no anton@64.227.103.202 'cd idleworkshop.com && git pull origin main && sudo chown -R www-data:www-data /var/www/idleworkshop.com/html'
 
