@@ -1,0 +1,17 @@
+/* styles.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+}
+
+h1 {
+    color: #333; /* Example: Set heading color */
+    font-size: 2rem; /* Example: Adjust font size */
+}
+
+img {
+    max-width: 100%; /* Example: Make image responsive */
+    height: auto;
+}
+
