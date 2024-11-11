@@ -1,17 +1,94 @@
 /* styles.css */
-.container {
+:root {
+  --text-color: #EEEEEE;
+  --primary-color: #00ADB5;
+  --tertiary-color: #393E46;
+  --background-color: #222831;
+  --link-color: #EEEEEE;
+  --link-hover-color: #FFD369;
+}
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page-title {
+    align-content: center;
+    margin-top: 1rem;
+    text-align: center;
+}
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  position: relative;
+  height: 100px;
+  display: flex;
+  padding: 0 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  z-index: 1;
+}
+.logo-link{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-35%);
+  left: 1rem;
+}
+.logo{
+  width: 145px;
+  height: 145px;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation Styling */
+.nav {
+    margin-top: 1.5rem;
+    margin-left: 200px;
+}
+
+.nav-list {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers content horizontally */
+    justify-content: center;
+    list-style: none;
+    gap: 1.5rem;
 }
 
-h1 {
-    color: #333; /* Example: Set heading color */
-    font-size: 2rem; /* Example: Adjust font size */
+.nav-link {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 2rem;
+    padding: 0.5rem;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-img {
-    max-width: 100%; /* Example: Make image responsive */
-    height: auto;
+.nav-link:hover,
+.nav-link:active,
+.nav-link:visited {
+    color: var(--link-color);
 }
 
+/* Underline for Active Link */
+.nav-link.active::after,
+.nav-link:active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--link-hover-color);
+}
