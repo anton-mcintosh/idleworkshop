@@ -1,11 +1,19 @@
 /* styles.css */
 :root {
+  --text-color: #D6BD98;
+  --link-color: #D6BD98;
+  --primary-color: #1A3636;
+  --secondary-color: #40534C;
+  --tertiary-color: #677D6A;
+  --background-color: #222831;
+  /*
   --text-color: #EEEEEE;
   --primary-color: #00ADB5;
   --tertiary-color: #393E46;
   --background-color: #222831;
   --link-color: #EEEEEE;
   --link-hover-color: #FFD369;
+*/
 }
 /* Basic Reset */
 * {
@@ -90,5 +98,5 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: var(--link-hover-color);
+    background-color: var(--tertiary-color);
 }
