@@ -107,6 +107,7 @@ body {
   background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  justify-content: right;
+  text-align: left;
+  padding: 2rem;
 }
