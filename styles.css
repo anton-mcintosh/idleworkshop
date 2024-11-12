@@ -1,10 +1,10 @@
 /* styles.css */
 :root {
-  --text-color: #D6BD98;
-  --link-color: #D6BD98;
-  --primary-color: #1A3636;
-  --secondary-color: #40534C;
-  --tertiary-color: #677D6A;
+  --text-color: #d6bd98;
+  --link-color: #d6bd98;
+  --primary-color: #1a3636;
+  --secondary-color: #40534c;
+  --tertiary-color: #677d6a;
   --background-color: #222831;
   /*
   --text-color: #EEEEEE;
@@ -17,21 +17,21 @@
 }
 /* Basic Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .page-title {
-    align-content: center;
-    margin-top: 1rem;
-    text-align: center;
+  align-content: center;
+  margin-top: 1rem;
+  text-align: center;
 }
 /* Body Styling */
 body {
-    font-family: Arial, sans-serif;
-    color: var(--text-color);
-    background-color: var(--background-color);
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 /* Header Styling */
@@ -45,58 +45,68 @@ body {
   color: white;
   z-index: 1;
 }
-.logo-link{
+.logo-link {
   position: absolute;
   top: 50%;
   transform: translateY(-35%);
   left: 1rem;
 }
-.logo{
+.logo {
   width: 145px;
   height: 145px;
 }
 
 .title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Navigation Styling */
 .nav {
-    margin-top: 1.5rem;
-    margin-left: 200px;
+  margin-top: 1.5rem;
+  margin-left: 200px;
 }
 
 .nav-list {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 1.5rem;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: var(--link-color);
-    font-size: 2rem;
-    padding: 0.5rem;
-    position: relative;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: var(--link-color);
+  font-size: 2rem;
+  padding: 0.5rem;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link:active,
 .nav-link:visited {
-    color: var(--link-color);
+  color: var(--link-color);
 }
 
 /* Underline for Active Link */
 .nav-link.active::after,
 .nav-link:active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--tertiary-color);
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--tertiary-color);
+}
+.about-me {
+  width: 50%;
+  position: relative;
+  margin: auto;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
