@@ -14,10 +14,12 @@ var collection *mongo.Collection
 var ctx = context.TODO()
 
 func ()  {
+
   err := godotenv.Load(".env")
   if err != nil {
     log.Fatal("Error loading .env file")
   }
+
   mongoURI := os.Getenv("MONGO_URI")
 
   clientOptions := options.Client().ApplyURI(mongoURI)
@@ -29,4 +31,5 @@ func ()  {
   if err != nil {
     log.Fatal(err)
       }
+  collection := client.Database("blogs").Collection("posts")
 }
