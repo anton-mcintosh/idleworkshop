@@ -1,19 +1,20 @@
 package main
 
 import (
-  "context",
-  "log",
-  "os",
+  "context"
+  "log"
+  "os"
 
-  "go.mongodb.org/mongo-driver/mongo",
-  "go.mongodb.org/mongo-driver/mongo/options",
-  "github.com/joho/godotenv",
+  "github.com/urfave/cli/v2"
+  "go.mongodb.org/mongo-driver/mongo"
+  "go.mongodb.org/mongo-driver/mongo/options"
+  "github.com/joho/godotenv"
 )
 
 var collection *mongo.Collection
 var ctx = context.TODO()
 
-func ()  {
+func init()  {
 
   err := godotenv.Load(".env")
   if err != nil {
@@ -31,5 +32,17 @@ func ()  {
   if err != nil {
     log.Fatal(err)
       }
-  collection := client.Database("blogs").Collection("posts")
+  collection = client.Database("blogs").Collection("posts")
+}
+
+func main() {
+  app := &cli.App{
+        Name: "Plog Boster",
+        Usage: "Bost a Plog!",
+        Commands: []*cli.Command{},
+    }
+  err2 := app.Run(os.Args)
+  if err2 != nil {
+    log.Fatal(err2)
+  }
 }
