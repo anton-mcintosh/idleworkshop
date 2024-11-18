@@ -11,6 +11,12 @@ import (
   "github.com/joho/godotenv"
 )
 
+type BlogPost struct {
+  ID      int    `json:"id"`
+  Title   string `json:"title"`
+  Content string `json:"content"`
+}
+
 var collection *mongo.Collection
 var ctx = context.TODO()
 
@@ -32,6 +38,6 @@ func main() {
     log.Fatal(err)
       }
   collection = client.Database("blogs").Collection("posts")
-  log.Println("Connected to MongoDB!")
+  newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
 
 }
