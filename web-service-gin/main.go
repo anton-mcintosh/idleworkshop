@@ -50,7 +50,7 @@ func main() {
   if err != nil {
     log.Fatal(err)
       }
-  log.println(result)
+  log.Println(result)
   log.Println(newPost)
 
 }
