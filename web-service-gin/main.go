@@ -45,7 +45,6 @@ func main() {
     log.Fatal(err)
   }
   filter := BlogPost{Title: "Testies!"}
-  var newPost BlogPost
   err = collection.FindOne(ctx, filter).Decode(&newPost)
 
   if err != nil {
