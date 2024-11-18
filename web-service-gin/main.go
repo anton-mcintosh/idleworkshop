@@ -9,13 +9,14 @@ import (
   "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
   "github.com/joho/godotenv"
+
+  "models/blogPost"
 )
 
 var collection *mongo.Collection
 var ctx = context.TODO()
 
-func init()  {
-
+func main() {
   err := godotenv.Load(".env")
   if err != nil {
     log.Fatal("Error loading .env file")
@@ -33,16 +34,5 @@ func init()  {
     log.Fatal(err)
       }
   collection = client.Database("blogs").Collection("posts")
-}
 
-func main() {
-  app := &cli.App{
-        Name: "Plog Boster",
-        Usage: "Bost a Plog!",
-        Commands: []*cli.Command{},
-    }
-  err2 := app.Run(os.Args)
-  if err2 != nil {
-    log.Fatal(err2)
-  }
 }
