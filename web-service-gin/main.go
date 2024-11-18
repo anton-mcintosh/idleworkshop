@@ -40,7 +40,7 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
 
-  result, err := collection.InsertOne(ctx, newPost)
+  err = collection.InsertOne(ctx, newPost)
   if err != nil {
     log.Fatal(err)
   }
