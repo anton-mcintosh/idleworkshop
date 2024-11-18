@@ -5,7 +5,7 @@ import (
   "log"
   "os"
 
-  "github.com/urfave/cli/v2"
+  //"github.com/urfave/cli/v2"
   "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
   "github.com/joho/godotenv"
@@ -32,5 +32,6 @@ func main() {
     log.Fatal(err)
       }
   collection = client.Database("blogs").Collection("posts")
+  log.Println("Connected to MongoDB!")
 
 }
