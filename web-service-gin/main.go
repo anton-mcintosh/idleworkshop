@@ -4,13 +4,11 @@ import (
   "context"
   "encoding/json"
   "log"
-  "os"
 
   //"github.com/urfave/cli/v2"
   "go.mongodb.org/mongo-driver/bson"
   "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
-  "github.com/joho/godotenv"
   
   "idleworkshop/website/models"
   "idleworkshop/website/utils"
@@ -21,7 +19,7 @@ var ctx = context.TODO()
 
 func main() {
 
-  client := utils.dbConnect()
+  client := utils.dbConnect
   // access the collection
   collection = client.Database("blogs").Collection("posts")
   /*
