@@ -53,7 +53,7 @@ func main() {
 
   // decode results
   // NTFS: To decode a single object, use the decode() method. For multiple documents, need to iterate over the cursor and decode each.
-  var allPosts []BlogPost
+  var allPosts []models.BlogPost
   cursor, err := collection.Find(ctx, filter, findOptions)
   if err != nil {
     log.Fatal(err)
@@ -62,7 +62,7 @@ func main() {
 
   //Decode the results
   for cursor.Next(ctx) {
-    var post BlogPost
+    var post models.BlogPost
     err := cursor.Decode(&post)
     if err != nil {
       log.Println("Error decoding post: ", err)
