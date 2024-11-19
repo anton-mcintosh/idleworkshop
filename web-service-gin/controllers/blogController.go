@@ -6,6 +6,8 @@ import (
   "go.mongodb.org/mongo-driver/mongo/options"
   "go.mongodb.org/mongo-driver/bson"
 
+  "idleworkshop/website/models"
+  "idleworkshop/website/utils"
 )
 
 func GetPosts(c *gin.Context) {
