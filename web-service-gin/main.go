@@ -11,13 +11,9 @@ import (
   "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
   "github.com/joho/godotenv"
+  
+  "models"
 )
-
-type BlogPost struct {
-  ID      int    `json:"id" bson:"id"`
-  Title   string `json:"title" bson:"title"`
-  Content string `json:"content" bson:"content"`
-}
 
 var collection *mongo.Collection
 var ctx = context.TODO()
