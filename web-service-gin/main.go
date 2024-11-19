@@ -12,7 +12,7 @@ import (
   "go.mongodb.org/mongo-driver/mongo/options"
   "github.com/joho/godotenv"
   
-  "/web-service-gin/models"
+  "idleworkshop/website/models"
 )
 
 var collection *mongo.Collection
