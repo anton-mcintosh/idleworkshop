@@ -2,16 +2,12 @@ package main
 
 import (
   "context"
-  "encoding/json"
-  "log"
 
   "github.com/gin-gonic/gin"
-  "go.mongodb.org/mongo-driver/bson"
   "go.mongodb.org/mongo-driver/mongo"
-  "go.mongodb.org/mongo-driver/mongo/options"
   
-  "idleworkshop/website/models"
   "idleworkshop/website/utils"
+  "idleworkshop/website/controllers"
 )
 
 var collection *mongo.Collection
