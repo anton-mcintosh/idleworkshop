@@ -10,6 +10,8 @@ import (
   "idleworkshop/website/utils"
 )
 
+ctx := context.TODO()
+collection = client.Database("blogs").Collection("posts")
 func GetPosts(c *gin.Context) {
   
   // define filter and option
