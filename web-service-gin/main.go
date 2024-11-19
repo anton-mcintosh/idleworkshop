@@ -39,6 +39,7 @@ func main() {
   if err != nil {
     log.Fatal(err)
       }
+  /*
   collection = client.Database("blogs").Collection("posts")
   newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
 
@@ -46,7 +47,7 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
-
+  */
   var allPosts []BlogPost
   filter := BlogPost{Title: "Testies!"}
   err = collection.FindOne(nil).Decode(&allPosts)
