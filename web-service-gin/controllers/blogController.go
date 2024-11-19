@@ -8,7 +8,7 @@ import (
 
 )
 
-func GetPosts(c *gin.Context) {}
+func GetPosts(c *gin.Context) {
   
   // define filter and option
   filter := bson.D{}
