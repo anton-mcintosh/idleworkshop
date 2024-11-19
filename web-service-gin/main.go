@@ -19,7 +19,7 @@ var ctx = context.TODO()
 
 func main() {
 
-  client := utils.dbConnect
+  client := utils.DBConnect()
   // access the collection
   collection = client.Database("blogs").Collection("posts")
   /*
