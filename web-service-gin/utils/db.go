@@ -1,6 +1,7 @@
 package utils
 
 import (
+  "context"
   "log"
   "os"
 
@@ -13,7 +14,7 @@ import (
 var collection *mongo.Collection
 var ctx = context.TODO()
 
-func dbConnect() string {
+func dbConnect() *mongo.Client {
     err := godotenv.Load("../.env")
   if err != nil {
     log.Fatal("Error loading .env file")
