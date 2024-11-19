@@ -2,10 +2,12 @@ package main
 
 import (
   "context"
+  "encoding/json"
   "log"
   "os"
 
   //"github.com/urfave/cli/v2"
+  "go.mongo.db/mongo-driver/bson"
   "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
   "github.com/joho/godotenv"
@@ -44,8 +46,10 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
+
+  var allPosts []BlogPost
   filter := BlogPost{Title: "Testies!"}
-  err = collection.FindOne(ctx, filter).Decode(&newPost)
+  err = collection.FindOne(nil).Decode(&allPosts)
 
   if err != nil {
     log.Fatal(err)
