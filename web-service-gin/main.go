@@ -48,14 +48,19 @@ func main() {
     log.Fatal(err)
   }
   */
+  collection = client.Database("blogs").Collection("posts")
+  findOptions := options.Find()
+  findOptions.setLimit(5)
   var allPosts []BlogPost
   filter := BlogPost{Title: "Testies!"}
-  err = collection.FindOne(nil).Decode(&allPosts)
+  err = collection.Find(ctx, bson.D{{}}, findOptions).Decode(&allPosts)
 
   if err != nil {
     log.Fatal(err)
       }
   log.Println(result)
-  log.Println(newPost)
-
+  for _, post := range allPosts {
+    postJSON, _ := json.Marshal(post)
+    log.Println(string(postJSON))
+  }
 }
