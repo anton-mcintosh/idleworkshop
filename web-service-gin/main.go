@@ -24,7 +24,7 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
   router.GET("/posts", GetPosts)
-  router.Run("localhost:8080")
+  router.Run("0.0.0.0:8080")
   /*
   newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
 
