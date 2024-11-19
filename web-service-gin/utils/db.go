@@ -1,8 +1,6 @@
 package utils
 
 import (
-  "context"
-  "encoding/json"
   "log"
   "os"
 
@@ -11,6 +9,9 @@ import (
   "go.mongodb.org/mongo-driver/mongo/options"
   "github.com/joho/godotenv"
 )
+
+var collection *mongo.Collection
+var ctx = context.TODO()
 
 func dbConnect() string {
     err := godotenv.Load("../.env")
