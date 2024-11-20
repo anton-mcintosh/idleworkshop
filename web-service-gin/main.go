@@ -19,7 +19,7 @@ func main() {
   // access the collection
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
-  router.GET("/posts", controllers.GetPosts)
+  router.GET("/posts", func (c *gin.context){controllers.GetPosts(collection, ctx)})
   router.Run("0.0.0.0:8080")
   /*
   newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
