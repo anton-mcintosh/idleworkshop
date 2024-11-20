@@ -18,7 +18,6 @@ func GetPosts(c *gin.Context, client *mongo.Client, ctx context.Context) {
   filter := bson.D{}
   findOptions := options.Find()
   findOptions.SetLimit(5)
-  collection = client.Database("blogs").Collection("posts")
 
   // decode results
   // NTFS: To decode a single object, use the decode() method. For multiple documents, need to iterate over the cursor and decode each.
