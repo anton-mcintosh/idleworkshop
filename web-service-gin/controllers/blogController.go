@@ -1,16 +1,18 @@
 package controllers
 
 import (
+  "context"
+  "log"
+  "encoding/json"
+
   "github.com/gin-gonic/gin"
-  "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
   "go.mongodb.org/mongo-driver/bson"
 
   "idleworkshop/website/models"
-  "idleworkshop/website/utils"
 )
 var ctx = context.TODO()
-var collection = client.Database("blogs").Collection("posts")
+var collection = *mongo.Collection
 func GetPosts(c *gin.Context) {
   
   // define filter and option
