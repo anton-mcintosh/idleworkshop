@@ -13,7 +13,7 @@ import (
   "idleworkshop/website/models"
 )
 var ctx = context.TODO()
-var collection = *mongo.Collection
+var collection *mongo.Collection
 func GetPosts(c *gin.Context) {
   
   // define filter and option
