@@ -41,8 +41,5 @@ func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.Context)
   if err := cursor.Err(); err != nil {
     log.Fatal(err)
   }
-  for _, post := range allPosts {
-    postJSON, _ := json.Marshal(post)
-    log.Println(string(postJSON))
-  }
+  c.JSON(200, gin.H{"posts": all)
 }
