@@ -3,7 +3,6 @@ package controllers
 import (
   "context"
   "log"
-  "encoding/json"
 
   "github.com/gin-gonic/gin"
   "go.mongodb.org/mongo-driver/mongo"
@@ -41,5 +40,5 @@ func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.Context)
   if err := cursor.Err(); err != nil {
     log.Fatal(err)
   }
-  c.JSON(200, gin.H{"posts": all})
+  c.JSON(200, gin.H{"posts": allPosts})
 }
