@@ -9,7 +9,7 @@ import (
   "idleworkshop/website/models"
   "idleworkshop/website/utils"
 )
-var ctx := context.TODO()
+var ctx = context.TODO()
 var collection = client.Database("blogs").Collection("posts")
 func GetPosts(c *gin.Context) {
   
