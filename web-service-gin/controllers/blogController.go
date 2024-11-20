@@ -12,7 +12,7 @@ import (
 
   "idleworkshop/website/models"
 )
-func GetPosts(c *gin.Context, client *mongo.Client, ctx context.Context) {
+func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context) {
   
   // define filter and option
   filter := bson.D{}
