@@ -1,7 +1,6 @@
 package controllers
 
 import (
-  "context"
   "log"
   "encoding/json"
 
@@ -12,7 +11,7 @@ import (
 
   "idleworkshop/website/models"
 )
-func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context) {
+func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.TODO()) {
   
   // define filter and option
   filter := bson.D{}
