@@ -4,9 +4,8 @@ import (
   "github.com/joho/godotenv"
 )
 
-  err := godotenv.Load(".env")
-
   func GetVar(req string) (requestedVar string) {
+  err := godotenv.Load(".env")
   if err != nil {
     log.Fatal("Error loading .env file")
   }

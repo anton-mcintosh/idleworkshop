@@ -8,6 +8,7 @@ import (
   "github.com/gin-gonic/gin"
   "go.mongodb.org/mongo-driver/mongo"
   "go.mongodb.org/mongo-driver/mongo/options"
+  "go.mongodb.org/mongo-driver/bson/primitive"
   "go.mongodb.org/mongo-driver/bson"
 
   "idleworkshop/website/models"
@@ -21,7 +22,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
   }
 
   newPost.ID = primitive.NewObjectID()
-  newPost.Date = time.Now().String()
+  newPost.Date = primitive.NewDateTimeFromTime(time.Now())
 
   c.BindJSON(&post)
   _, err := collection.InsertOne(ctx, newPost)
