@@ -3,6 +3,7 @@ package controllers
 import (
   "context"
   "log"
+  "net/http"
 
   "github.com/gin-gonic/gin"
   "go.mongodb.org/mongo-driver/mongo"
@@ -11,6 +12,25 @@ import (
 
   "idleworkshop/website/models"
 )
+
+func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
+  var newPost models.BlogPost
+  if err := c.ShouldBindJSON(&newPost); err != nil {
+    c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
+    return
+  }
+
+  newPost.ID = primitive.NewObjectID()
+  newPost.Date = time.Now().String()
+
+  c.BindJSON(&post)
+  _, err := collection.InsertOne(ctx, newPost)
+  if err != nil {
+    c.JSON(http.StatusInternalServerError, gin.H{"oopsie!": err.Error()})
+  }
+  c.JSON(http.StatusCreated, gin.H{"message": "Post created!"})
+}
+
 func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
   
   // define filter and option
