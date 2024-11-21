@@ -5,8 +5,8 @@ import (
 )
 
 type BlogPost struct {
-  ID      primitive `json:"id" bson:"id"`
-  Date    primitive `json:"date" bson:"date"`
+  ID      primitive.ObjectID `json:"id" bson:"id"`
+  Date    primitive.DateTime `json:"date" bson:"date"`
   Title   string `json:"title" bson:"title"`
   Content string `json:"content" bson:"content"`
 }
