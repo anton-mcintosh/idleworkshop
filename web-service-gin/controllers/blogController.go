@@ -25,7 +25,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
   newPost.ID = primitive.NewObjectID()
   newPost.Date = primitive.NewDateTimeFromTime(time.Now())
 
-  c.BindJSON(&newpost)
+  c.BindJSON(&newPost)
   _, err := collection.InsertOne(ctx, newPost)
   if err != nil {
     c.JSON(http.StatusInternalServerError, gin.H{"oopsie!": err.Error()})
