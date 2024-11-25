@@ -29,12 +29,6 @@ func main() {
     ExposeHeaders:    []string{"Content-Length"},
     AllowCredentials: true,
   }
-  router.OPTIONS("/*path", func(c *gin.Context) {
-    c.Header("Access-Control-Allow-Origin", "*")
-    c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
-    c.Header("Access-Control-Allow-Headers", "Authorization, Content-Type, Origin")
-    c.Status(204) // No Content
-})
   router.Use(cors.New(config))
   router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
