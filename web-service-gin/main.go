@@ -23,7 +23,7 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
   config := cors.Config{
-    AllowOrigins: []string{"*", "75.172.97.44"},
+    AllowOrigins: []string{"*"},
     AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
     AllowHeaders:     []string{"Authorization", "Content-Type", "Origin"},
     ExposeHeaders:    []string{"Content-Length"},
