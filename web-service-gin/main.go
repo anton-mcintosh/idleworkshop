@@ -22,7 +22,12 @@ func main() {
   // access the collection
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
-  router.Use(cors.Default())
+  config := cors.DefaultConfig()
+  config.AllowAllOrigins = true
+  config.AllowHeaders = []string{"Authorization", "origin", "content-type"}
+  config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE"}
+  config.ExposeHeaders = []string{"Content-Length"}
+  router.use(cors.New(config))
   router.GET("/posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
   router.Run("0.0.0.0:8080")
