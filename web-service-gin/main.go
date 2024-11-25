@@ -27,9 +27,9 @@ func main() {
   corsConfig.AllowMethods = []string{"GET", "POST"}
   corsConfig.AllowHeaders = []string{"Authorization"}
   corsConfig.ExposeHeaders = []string{"Content-Length"}
+  router.Use(cors.New(corsConfig))
   router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
-  router.Use(cors.New(corsConfig))
   router.Run("0.0.0.0:8080")
   /*
   newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
