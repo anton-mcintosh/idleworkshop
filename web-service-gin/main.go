@@ -3,6 +3,7 @@ package main
 import (
   "context"
 
+  "github.com/gin-contrib/cors"
   "github.com/gin-gonic/gin"
   "go.mongodb.org/mongo-driver/mongo"
 
@@ -23,6 +24,7 @@ func main() {
   router := gin.Default()
   router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
+  router.Use(cors.Default())
   router.Run("0.0.0.0:8080")
   /*
   newPost := BlogPost{ID: 1, Title: "Testies!", Content: "One, two!"}
