@@ -23,7 +23,7 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
   config := cors.DefaultConfig()
-  router.Use(cors.Default())
+  router.Use(config)
   router.GET("/posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
   router.Run("0.0.0.0:8080")
