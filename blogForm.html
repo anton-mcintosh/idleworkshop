@@ -13,41 +13,62 @@
       <textarea id="content" name="content" required></textarea>
       <button type="submit">Submit</button>
     </form>
-    <button type="get-posts">Get Posts</button>
+    <button id="get-posts" type="button">Get Posts</button>
 
     <script>
+      // Submit Post Form
       const form = document.getElementById("postForm");
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const title = document.getElementById("title").value;
         const content = document.getElementById("content").value;
 
-        const response = await fetch("http://idleworkshop.com/posts", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer testkey123",
-          },
-          body: JSON.stringify({ title, content }),
-        });
+        try {
+          const response = await fetch("http://idleworkshop.com/posts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "text/plain",
+              Authorization: "testkey123",
+            },
+            body: JSON.stringify({ title, content }),
+          });
 
-        const data = await response.json();
-        alert(data.message || "Post created successfully!");
+          if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          alert(data.message || "Post created successfully!");
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Failed to create post. Check the console for details.");
+        }
       });
-    </script>
-    <script>
-      const blogs = document.getElementById("getBlogs")
-      form.addEventListener("get-posts", async (e) => {
-        e.preventDefault();
-        const response = await fetch("http://idleworkshop.com/posts", {
-          method: "GET",
-          headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer testkey123",
-          },
-        });
-        const data = await response.json();
-        console.log(data);
+
+      // Get Posts
+      const getPostsButton = document.getElementById("get-posts");
+      getPostsButton.addEventListener("click", async () => {
+        try {
+          const response = await fetch("http://idleworkshop.com/get-posts", {
+            method: "GET",
+            headers: {
+              "Content-Type": "text/plain",
+              Authorization: "testkey123",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+          }
+
+          const data = await response.json();
+          console.log(data);
+          alert("Posts fetched successfully! Check the console for details.");
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Failed to fetch posts. Check the console for details.");
+        }
+      });
     </script>
   </body>
 </html>
