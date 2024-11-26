@@ -24,7 +24,7 @@
         const content = document.getElementById("content").value;
 
         try {
-          const response = await fetch("http://idleworkshop.com/posts", {
+          const response = await fetch("https://idleworkshop.com/posts", {
             method: "POST",
             headers: {
               "Content-Type": "text/plain",
@@ -49,7 +49,7 @@
       const getPostsButton = document.getElementById("get-posts");
       getPostsButton.addEventListener("click", async () => {
         try {
-          const response = await fetch("http://idleworkshop.com/get-posts", {
+          const response = await fetch("https://idleworkshop.com/get-posts", {
             method: "GET",
             headers: {
               "Content-Type": "text/plain",
