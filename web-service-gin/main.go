@@ -4,6 +4,7 @@ import (
   "context"
   "net/http"
   "log"
+  "io"
 
 //  "github.com/gin-contrib/cors"
   "github.com/gin-gonic/gin"
@@ -26,7 +27,7 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
   // router.Use(corsMiddleware())
-  corsConfig, err := cors.New(cors.Options{
+  corsConfig, err := cors.NewMiddleware(cors.Options{
     Origins: []string{"*"},
     Methods: []string{"GET", "POST", "OPTIONS"},
     RequestHeaders: []string{"Authorization"},
