@@ -36,7 +36,7 @@ func main() {
   }
   corsConfig.SetDebug(true)
   api := http.NewServeMux()
-  api.HandleFunc("GET /get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
+  api.HandleFunc("GET /get-posts", controllers.GetPosts(c, collection, ctx))
 
   router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
