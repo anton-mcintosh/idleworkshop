@@ -3,13 +3,10 @@ package main
 import (
   "context"
   "net/http"
-  "log"
 
 //  "github.com/gin-contrib/cors"
   "github.com/gin-gonic/gin"
   "go.mongodb.org/mongo-driver/mongo"
-  "github.com/jub0bs/cors"
-
   
   "idleworkshop/website/utils"
   "idleworkshop/website/controllers"
