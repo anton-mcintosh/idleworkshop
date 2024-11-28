@@ -4,7 +4,6 @@ import (
   "context"
   "net/http"
   "log"
-  "io"
 
 //  "github.com/gin-contrib/cors"
   "github.com/gin-gonic/gin"
@@ -27,7 +26,7 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
   // router.Use(corsMiddleware())
-  corsConfig, err := cors.NewMiddleware(cors.Options{
+  corsConfig, err := cors.NewMiddleware(cors.Config{
     Origins: []string{"*"},
     Methods: []string{"GET", "POST", "OPTIONS"},
     RequestHeaders: []string{"Authorization"},
@@ -35,7 +34,7 @@ func main() {
   if err != nil {
     log.Fatal(err)
   }
-  corsConfig.setDebug(true)
+  corsConfig.SetDebug(true)
   router.Use(corsConfig)
 
   router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
