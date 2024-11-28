@@ -24,8 +24,8 @@ func main() {
   router := gin.Default()
   router.Use(corsMiddleware())
 
-  router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
-  router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
+  router.GET("/api/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
+  router.POST("/api/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
   router.Run("0.0.0.0:8080")
 }
 func corsMiddleware() gin.HandlerFunc {
