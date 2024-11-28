@@ -26,17 +26,6 @@ func main() {
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
   router.Use(corsMiddleware())
-  corsConfig, err := cors.NewMiddleware(cors.Config{
-    Origins: []string{"*"},
-    Methods: []string{"GET", "POST", "OPTIONS"},
-    RequestHeaders: []string{"Authorization"},
-  })
-  if err != nil {
-    log.Fatal(err)
-  }
-  corsConfig.SetDebug(true)
-  api := http.NewServeMux()
-  api.HandleFunc("GET /get-posts", controllers.GetPosts(c, collection, ctx))
 
   router.GET("/get-posts", func(c *gin.Context) {(controllers.GetPosts(c, collection, ctx))})
   router.POST("/posts", middleware.AuthMiddleware(), func (c *gin.Context) {(controllers.CreatePost(c, collection, ctx))})
