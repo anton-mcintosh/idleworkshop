@@ -41,7 +41,7 @@ func corsMiddleware() gin.HandlerFunc {
     c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
     c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
     if c.Request.Method == "OPTIONS" {
-      c.AbortWithStatus(204)
+      c.WriteHeader(http.StatusOK)
       return
     }
     c.Next()
