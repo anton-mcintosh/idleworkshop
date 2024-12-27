@@ -37,7 +37,7 @@ func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.Context)
   // define filter and option
   filter := bson.D{}
   findOptions := options.Find()
-  findOptions.SetLimit(5)
+  findOptions.SetLimit(20)
 
   // decode results
   // NTFS: To decode a single object, use the decode() method. For multiple documents, need to iterate over the cursor and decode each.
