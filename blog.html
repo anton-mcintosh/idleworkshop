@@ -64,10 +64,19 @@
             const dateElement = document.createElement("p");
             dateElement.textContent = `Published: ${new Date(post.date).toLocaleDateString()}`;
 
+            const tagsElement = document.createElement("ul");
+            post.tags.forEach((tag) => {
+              const tagElement = document.createElement("li");
+              tagElement.textContent = tag;
+              tagsElement.appendChild(tagElement);
+            });
+
             const contentElement = document.createElement("md-block");
             contentElement.textContent = post.content;
 
+            postElement.appendChild(titleElement);
             postElement.appendChild(dateElement);
+            postElement.appendChild(tagsElement);
             postElement.appendChild(contentElement);
 
             postsContainer.appendChild(postElement);
