@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Idle Workshop</title>
     <link rel="stylesheet" href="styles.css" />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/md-block/md-block.js"
+    ></script>
   </head>
   <body>
     <header class="header">
@@ -25,12 +29,9 @@
       <h1>Blog</h1>
     </div>
 
-    <div id="posts-container" class="posts-container">
-      <!-- Blog posts will be dynamically rendered here -->
-    </div>
+    <div id="posts-container" class="posts-container"></div>
 
     <script>
-      // Fetch and display posts
       async function fetchAndDisplayPosts() {
         try {
           const response = await fetch(
@@ -41,27 +42,42 @@
             throw new Error(`Error: ${response.statusText}`);
           }
 
-          const posts = await response.json();
+          const data = await response.json();
+          console.log(data); // debug
 
-          // Get the container element
+          const posts = data.posts;
+
+          if (!Array.isArray(posts)) {
+            throw new Error("Posts is not an array.");
+          }
+
           const postsContainer = document.getElementById("posts-container");
-
-          // Clear any existing content
           postsContainer.innerHTML = "";
 
-          // Loop through the posts and create HTML elements for each one
           for (const post of posts) {
             const postElement = document.createElement("div");
-            postElement.classList.add("post");
+            postElement.classList.add("blog-post");
+
             const titleElement = document.createElement("h2");
             titleElement.textContent = post.title;
-            const contentElement = document.createElement("p");
+
+            const dateElement = document.createElement("p");
+            dateElement.textContent = `Published: ${new Date(post.date).toLocaleDateString()}`;
+
+            const contentElement = document.createElement("md-block");
             contentElement.textContent = post.content;
-            postElement.appendChild(titleElement);
+
+            postElement.appendChild(dateElement);
             postElement.appendChild(contentElement);
+
             postsContainer.appendChild(postElement);
-                      }
-      // Fetch posts when the page loads
+          }
+        } catch (error) {
+          console.error(error);
+          const postsContainer = document.getElementById("posts-container");
+          postsContainer.innerHTML = "<p>Failed to fetch posts.</p>";
+        }
+      }
       document.addEventListener("DOMContentLoaded", fetchAndDisplayPosts);
     </script>
   </body>

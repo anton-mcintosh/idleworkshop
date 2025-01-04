@@ -111,3 +111,14 @@ body {
   text-align: left;
   padding: 2rem;
 }
+.blog-post {
+  width: 75%;
+  position: relative;
+  margin: auto;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  text-align: left;
+  padding: 2rem;
+}
