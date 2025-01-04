@@ -13,8 +13,8 @@ type BlogPost struct {
 }
 
 type BlogMetadata struct {
-  Title string 'yaml:"title"'
-  Tags []string 'yaml:"tags"'
+  Title string `yaml:"title"`
+  Tags []string `yaml:"tags"`
 }
 
 type ParsedBlogPost struct {
