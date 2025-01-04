@@ -16,20 +16,35 @@ import (
 )
 
 func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
-  var newPost models.BlogPost
-  if err := c.ShouldBindJSON(&newPost); err != nil {
+  var markdownData struct {
+    Markdown string 'json:"markdown"'
+  }
+  if err := c.ShouldBindJSON(&markdownData); err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
     return
   }
 
-  newPost.ID = primitive.NewObjectID()
-  newPost.Date = primitive.NewDateTimeFromTime(time.Now())
+  parsedPost, err := utils.ParseMarkdown(markdownData.Markdown)
+  if err != nil {
+    c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
+    return
+  }
 
-  _, err := collection.InsertOne(ctx, newPost)
+  newPost := models.BlogPost{
+    ID:      primitive.NewObjectID(),
+    Date:    primitive.NewDateTimeFromTime(time.Now()),
+    Title:   parsedPost.Metadata.Title,
+    Tags:    parsedPost.Metadata.Tags,
+    Content: parsedPost.Content,
+  }
+
+  _, err = collection.InsertOne(ctx, newPost)
   if err != nil {
     c.JSON(http.StatusInternalServerError, gin.H{"oopsie!": err.Error()})
-  }
-  c.JSON(http.StatusCreated, gin.H{"message": "Post created!"})
+    return
+      }
+  c.JSON(200, gin.H{"status": "Post created!"})
+
 }
 
 func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
