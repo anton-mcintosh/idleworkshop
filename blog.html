@@ -50,26 +50,17 @@
           postsContainer.innerHTML = "";
 
           // Loop through the posts and create HTML elements for each one
-          posts.forEach((post) => {
+          for (const post of posts) {
             const postElement = document.createElement("div");
             postElement.classList.add("post");
-
-            // Add post content to the element
-            postElement.innerHTML = `
-                    <div class="post-content">
-                        ${post.content}
-                    </div>
-                `;
-
-            // Append the post to the container
+            const titleElement = document.createElement("h2");
+            titleElement.textContent = post.title;
+            const contentElement = document.createElement("p");
+            contentElement.textContent = post.content;
+            postElement.appendChild(titleElement);
+            postElement.appendChild(contentElement);
             postsContainer.appendChild(postElement);
-          });
-        } catch (error) {
-          console.error("Error:", error);
-          alert("Failed to fetch posts. Check the console for details.");
-        }
-      }
-
+                      }
       // Fetch posts when the page loads
       document.addEventListener("DOMContentLoaded", fetchAndDisplayPosts);
     </script>
