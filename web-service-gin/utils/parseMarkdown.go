@@ -1,7 +1,6 @@
 package utils
 
 import (
-  "bytes"
   "strings"
 
   "gopkg.in/yaml.v2"

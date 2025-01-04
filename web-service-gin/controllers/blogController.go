@@ -13,11 +13,12 @@ import (
   "go.mongodb.org/mongo-driver/bson"
 
   "idleworkshop/website/models"
+  "idleworkshop/website/utils"
 )
 
 func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
   var markdownData struct {
-    Markdown string 'json:"markdown"'
+    Markdown string `json:"markdown"`
   }
   if err := c.ShouldBindJSON(&markdownData); err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
