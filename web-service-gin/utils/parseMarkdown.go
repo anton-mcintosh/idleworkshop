@@ -12,6 +12,7 @@ import (
 func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
   // Split the markdown into metadata and content
   parts := strings.SplitN(markdown, "---", 3)
+  console.log("frontmatter: ", parts)
   if len(parts) < 3 {
     return nil, errors.New("Invalid markdown format")
   }
