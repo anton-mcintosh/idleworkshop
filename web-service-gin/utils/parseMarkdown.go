@@ -24,9 +24,17 @@ func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
     return nil, err
   }
   // Parse the content
-  content := strings.TrimSpace(parts[2])
+  content := processImageReferences(strings.TrimSpace(parts[2]))
   return &models.ParsedBlogPost{
     Metadata: metadata,
     Content:  content,
   }, nil
+}
+
+func processImageReferences(content string) string {
+  imageRegex := regexp.MustCompile('!\[\[(.+?)\]\]')
+
+  return imageRegex.ReplaceAllStringFunc(content, func(match string) string {
+    imageName := imageRegex.FindStringSubmatch(match)[1]
+    return '<img src="/images/' + imageName + '">'
 }
