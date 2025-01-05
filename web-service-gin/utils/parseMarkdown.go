@@ -32,9 +32,9 @@ func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
 }
 
 func processImageReferences(content string) string {
-  imageRegex := regexp.MustCompile('!\[\[(.+?)\]\]')
+  imageRegex := regexp.MustCompile(`!\[\[(.+?)\]\]`)
 
   return imageRegex.ReplaceAllStringFunc(content, func(match string) string {
     imageName := imageRegex.FindStringSubmatch(match)[1]
-    return '<img src="/images/' + imageName + '">'
+    return `<img src="/images/' + imageName + '" />`
 }
