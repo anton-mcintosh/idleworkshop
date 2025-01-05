@@ -22,7 +22,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
     File string `json:"file"`
   }
   if err := c.ShouldBindJSON(&markdownData); err != nil {
-    c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
+    c.JSON(http.StatusBadRequest, gin.H{"oopsie-1!": err.Error()})
     return
   }
   log.Println(markdownData.Markdown)
@@ -30,7 +30,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
   parsedPost, err := utils.ParseMarkdown(markdownData.Markdown)
   log.Println(parsedPost)
   if err != nil {
-    c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
+    c.JSON(http.StatusBadRequest, gin.H{"oopsie-2!": err.Error()})
     return
   }
 
@@ -45,7 +45,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
 
   _, err = collection.InsertOne(ctx, newPost)
   if err != nil {
-    c.JSON(http.StatusInternalServerError, gin.H{"oopsie!": err.Error()})
+    c.JSON(http.StatusInternalServerError, gin.H{"oopsie-3!": err.Error()})
     return
       }
   c.JSON(200, gin.H{"status": "Post created!"})
