@@ -65,11 +65,12 @@
             dateElement.textContent = `Published: ${new Date(post.date).toLocaleDateString()}`;
 
             const tagsElement = document.createElement("ul");
-            post.tags.forEach((tag) => {
+            console.log(`Post Title: ${post.title}, Tags:`, post.tags);
+            for (const tag of post.tags) {
               const tagElement = document.createElement("li");
               tagElement.textContent = tag;
               tagsElement.appendChild(tagElement);
-            });
+            };
 
             const contentElement = document.createElement("md-block");
             contentElement.textContent = post.content;
