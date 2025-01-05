@@ -24,6 +24,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
     c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
     return
   }
+  log.Println(markdownData.Markdown)
 
   parsedPost, err := utils.ParseMarkdown(markdownData.Markdown)
   if err != nil {
