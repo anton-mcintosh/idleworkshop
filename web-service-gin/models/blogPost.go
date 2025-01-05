@@ -7,7 +7,6 @@ import (
 type BlogPost struct {
   ID      primitive.ObjectID `json:"id" bson:"_id,omitempty"`
   Date    primitive.DateTime `json:"date" bson:"date"`
-  FileName  string `json:"filename" bson:"filename"`
   Title   string `json:"title" bson:"title"`
   Slug    string `json:"slug" bson:"slug"`
   Tags    []string `json:"tags" bson:"tags"`

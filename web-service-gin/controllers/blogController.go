@@ -28,27 +28,37 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
   log.Println(markdownData.Markdown)
 
   parsedPost, err := utils.ParseMarkdown(markdownData.Markdown)
-  log.Println(parsedPost)
+
   if err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"oopsie-2!": err.Error()})
     return
   }
+  var slug = markdownData.File
 
-  newPost := models.BlogPost{
-    ID:      primitive.NewObjectID(),
-    Date:    primitive.NewDateTimeFromTime(time.Now()),
-    Slug:    markdownData.File,
-    Title:   parsedPost.Metadata.Title,
-    Tags:    parsedPost.Metadata.Tags,
-    Content: parsedPost.Content,
+  filter := bson.M{"slug": slug}
+  update := bson.M{
+    "$set": bson.M{
+      "slug": slug,
+      "title": parsedPost.Metadata.Title,
+      "tags": parsedPost.Metadata.Tags,
+      "content": parsedPost.Content,
+      "date" : primitive.NewDateTimeFromTime(time.Now()),
+    },
   }
 
-  _, err = collection.InsertOne(ctx, newPost)
+  options := options.Update().SetUpsert(true)
+
+  _, err = collection.UpdateOne(ctx, filter, update, options)
   if err != nil {
-    c.JSON(http.StatusInternalServerError, gin.H{"oopsie-3!": err.Error()})
+    c.JSON(http.StatusBadRequest, gin.H{"oopsie!": "Error upserting post"})
     return
       }
-  c.JSON(200, gin.H{"status": "Post created!"})
+
+  if result.UpsertedCount > 0 {
+    c.JSON(http.StatusCreated, gin.H{"message": "Post created"})
+      } else {
+    c.JSON(http.StatusOK, gin.H{"message": "Post updated"})
+      }
 
 }
 
