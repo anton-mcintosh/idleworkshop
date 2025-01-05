@@ -19,6 +19,7 @@ import (
 func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Context) {
   var markdownData struct {
     Markdown string `json:"markdown"`
+    File string `json:"file"`
   }
   if err := c.ShouldBindJSON(&markdownData); err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"oopsie!": err.Error()})
@@ -36,6 +37,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
   newPost := models.BlogPost{
     ID:      primitive.NewObjectID(),
     Date:    primitive.NewDateTimeFromTime(time.Now()),
+    Slug:    markdownData.File,
     Title:   parsedPost.Metadata.Title,
     Tags:    parsedPost.Metadata.Tags,
     Content: parsedPost.Content,
