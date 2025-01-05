@@ -48,7 +48,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
 
   options := options.Update().SetUpsert(true)
 
-  _, err = collection.UpdateOne(ctx, filter, update, options)
+  result, err := collection.UpdateOne(ctx, filter, update, options)
   if err != nil {
     c.JSON(http.StatusBadRequest, gin.H{"oopsie!": "Error upserting post"})
     return
