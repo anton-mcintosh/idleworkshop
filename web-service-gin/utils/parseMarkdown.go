@@ -12,6 +12,7 @@ import (
 
 func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
   // Split the markdown into metadata and content
+  log.Println(markdown)
   parts := strings.SplitN(markdown, "---", 3)
   log.Println(parts)
   if len(parts) < 3 {
