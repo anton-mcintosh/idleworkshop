@@ -3,6 +3,7 @@ package utils
 import (
   "strings"
   "log"
+  "regexp"
 
   "gopkg.in/yaml.v2"
   "errors"
@@ -36,5 +37,6 @@ func processImageReferences(content string) string {
 
   return imageRegex.ReplaceAllStringFunc(content, func(match string) string {
     imageName := imageRegex.FindStringSubmatch(match)[1]
-    return `<img src="/images/' + imageName + '" />`
+    return `<img src="/images/` + imageName + `" alt="` + imageName + `" />`
+  })
 }
