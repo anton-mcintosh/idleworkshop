@@ -112,7 +112,7 @@ body {
   padding: 2rem;
 }
 .blog-post {
-  width: 75%;
+  width: 60%;
   position: relative;
   margin: auto;
   background-color: var(--secondary-color);
@@ -121,4 +121,8 @@ body {
   justify-content: right;
   text-align: left;
   padding: 2rem;
+}
+.blog-post img {
+  width: 75%;
+  height: auto;
 }
