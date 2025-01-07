@@ -16,10 +16,14 @@ type BlogPost struct {
 type BlogMetadata struct {
   Title string `yaml:"title"`
   Tags []string `yaml:"tags"`
+  Nutshell string `yaml:"nutshell"`
+  Topic string `yaml:"topic"`
+  ReadTime string `yaml:"readTime"`
 }
 
 type ParsedBlogPost struct {
   Metadata BlogMetadata
+  Summary string
   Content string
 }
 

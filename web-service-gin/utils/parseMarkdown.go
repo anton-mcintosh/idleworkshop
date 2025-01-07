@@ -25,8 +25,17 @@ func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
   }
   // Parse the content
   content := strings.TrimSpace(parts[2])
+  contentParts := strings.SplitN(content, "---", 2)
+
+  summary := strings.TrimSpace(contentParts[0])
+  mainContent := ""
+  if len(contentParts) > 1 {
+    mainContent = strings.TrimSpace(contentParts[1])
+  }
+  
   return &models.ParsedBlogPost{
     Metadata: metadata,
+    Summary: summary,
     Content:  content,
   }, nil
 }
