@@ -44,6 +44,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
       "nutshell": parsedPost.Metadata.Nutshell,
       "readtime": parsedPost.Metadata.ReadTime,
       "content": parsedPost.Content,
+      "summary": parsedPost.Summary,
       "date" : primitive.NewDateTimeFromTime(time.Now()),
     },
   }
