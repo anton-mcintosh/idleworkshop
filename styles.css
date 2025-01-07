@@ -123,5 +123,6 @@ body {
   padding: 2rem;
 }
 .blog-post img {
-  width: 50%;
+  width: 75%;
+  height: auto;
 }
