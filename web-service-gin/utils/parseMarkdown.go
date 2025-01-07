@@ -36,6 +36,6 @@ func ParseMarkdown(markdown string) (*models.ParsedBlogPost, error) {
   return &models.ParsedBlogPost{
     Metadata: metadata,
     Summary: summary,
-    Content:  content,
+    Content:  mainContent,
   }, nil
 }
