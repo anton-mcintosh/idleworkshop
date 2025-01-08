@@ -11,7 +11,7 @@ type BlogPost struct {
   Slug    string `json:"slug" bson:"slug"`
   Tags    []string `json:"tags" bson:"tags"`
   Nutshell string `json:"nutshell" bson:"nutshell"`
-  ReadTime string `json:"readTime" bson:"readTime"`
+  ReadTime string `json:"readtime" bson:"readtime"`
   Summary string `json:"summary" bson:"summary"`
   Content string `json:"content" bson:"content"`
 }
@@ -21,7 +21,7 @@ type BlogMetadata struct {
   Tags []string `yaml:"tags"`
   Nutshell string `yaml:"nutshell"`
   Topic string `yaml:"topic"`
-  ReadTime string `yaml:"readTime"`
+  ReadTime string `yaml:"readtime"`
 }
 
 type ParsedBlogPost struct {
