@@ -70,15 +70,9 @@ async function fetchAndDisplayPosts() {
       nutshell.textContent = post.nutshell;
 
       // the 1-2 paragraph summary
-      const summary = document.createElement("p");
+      const summary = document.createElement("md-block");
+      summary.textContent = post.summary;
 
-      // this little bit is what makes the summary into multiple paragraphs
-      const summaryParagraphs = post.summary.split("\n");
-      for (const paragraph of summaryParagraphs) {
-        const p = document.createElement("p");
-        p.textContent = paragraph;
-        summary.appendChild(p);
-      }
       //footer with tags and button
       const footer = document.createElement("footer");
       const tagsWrapper = document.createElement("div");
@@ -167,17 +161,19 @@ function displayPost(post) {
   metadata.appendChild(topicContainer);
   header.appendChild(metadata);
 
-  const summary = document.createElement("p");
-  const summaryParagraphs = post.summary.split("\n");
-  for (const paragraph of summaryParagraphs) {
-    const p = document.createElement("p");
-    p.textContent = paragraph;
-    summary.appendChild(p);
-  }
+  const summary = document.createElement("md-block");
+  summary.textContent = post.summary;
+
   const contentElement = document.createElement("md-block");
   contentElement.textContent = post.content;
 
   postContainer.appendChild(header);
   postContainer.appendChild(summary);
   postContainer.appendChild(contentElement);
+
+  const backButton = document.createElement("button");
+  backButton.classList.add("button");
+  backButton.textContent = "Back to Posts";
+  backButton.onclick = fetchAndDisplayPosts;
+  postContainer.appendChild(backButton);
 }

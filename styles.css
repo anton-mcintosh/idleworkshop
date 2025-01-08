@@ -120,7 +120,7 @@ body {
   font-size: 1.2rem;
 }
 .blog-preview {
-  width: 70%;
+  width: 90%;
   position: relative;
   margin: auto;
   // background-color: var(--secondary-color);
@@ -140,7 +140,6 @@ body {
   display: flex;
   gap: 1rem;
   font-size: 0.9rem;
-  font-color: var(--secondary-color);
   padding: 0.8rem;
 }
 .metadata-item {
@@ -148,6 +147,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-size: 1rem;
+  color: grey;
 }
 .metadata-item i {
   font-size: 1.4rem;
@@ -172,10 +172,18 @@ body {
   align-items: center;
   gap: 1rem;
 }
+.blog-preview img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
+}
 .tags-wrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: grey;
 }
 .tags-wrapper .fa-tags {
   font-size: 1.5rem;
@@ -197,6 +205,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: fit-content;
 }
 .button:hovor {
   background-color: var(--secondary-color);
@@ -216,4 +225,7 @@ body {
 .blog-post img {
   width: 75%;
   height: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 1rem;
 }
