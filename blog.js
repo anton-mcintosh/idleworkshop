@@ -25,7 +25,7 @@ async function fetchAndDisplayPosts() {
 
       //container for the header stuff
       const header = document.createElement("header");
-      
+
       const title = document.createElement("h2");
       title.textContent = post.title;
       const metadata = document.createElement("div");
@@ -38,7 +38,7 @@ async function fetchAndDisplayPosts() {
       dateText.textContent = ` ${new Date(post.date).toLocaleDateString()}`;
       dateContainer.appendChild(calIcon);
       dateContainer.appendChild(dateText);
-      
+
       const readTimeContainer = document.createElement("span");
       readTimeContainer.classList.add("metadata-item");
       const clockIcon = document.createElement("i");
@@ -98,9 +98,8 @@ async function fetchAndDisplayPosts() {
       const button = document.createElement("button");
       button.classList.add("button");
       button.textContent = "Check it out";
-      button.onclick = () => {
-        window.location.href = `/blog/${post.slug}`;
-      };
+      button.onclick = () => displayPost(post);
+
       footer.appendChild(tagsWrapper);
       footer.appendChild(button);
 
@@ -123,3 +122,62 @@ async function fetchAndDisplayPosts() {
   }
 }
 document.addEventListener("DOMContentLoaded", fetchAndDisplayPosts);
+
+function displayPost(post) {
+  const postContainer = document.getElementById("posts-container");
+  postContainer.innerHTML = "";
+
+  const header = document.createElement("header");
+
+  const title = document.createElement("h1");
+  title.textContent = post.title;
+  header.appendChild(title);
+
+  const metadata = document.createElement("div");
+  metadata.classList.add("metadata");
+  const dateContainer = document.createElement("span");
+  dateContainer.classList.add("metadata-item");
+  const calIcon = document.createElement("i");
+  calIcon.classList.add("fas", "fa-calendar");
+  const dateText = document.createElement("span");
+  dateText.textContent = ` ${new Date(post.date).toLocaleDateString()}`;
+  dateContainer.appendChild(calIcon);
+  dateContainer.appendChild(dateText);
+
+  const readTimeContainer = document.createElement("span");
+  readTimeContainer.classList.add("metadata-item");
+  const clockIcon = document.createElement("i");
+  clockIcon.classList.add("fas", "fa-clock");
+  const readTimeText = document.createElement("span");
+  readTimeText.textContent = ` ${post.readTime}`;
+  readTimeContainer.appendChild(clockIcon);
+  readTimeContainer.appendChild(readTimeText);
+
+  const topicContainer = document.createElement("span");
+  topicContainer.classList.add("metadata-item");
+  const topicIcon = document.createElement("i");
+  topicIcon.classList.add("fas", "fa-pen-to-square");
+  const topicText = document.createElement("span");
+  topicText.textContent = ` ${post.topic}`;
+  topicContainer.appendChild(topicIcon);
+  topicContainer.appendChild(topicText);
+
+  metadata.appendChild(dateContainer);
+  metadata.appendChild(readTimeContainer);
+  metadata.appendChild(topicContainer);
+  header.appendChild(metadata);
+
+  const summary = document.createElement("p");
+  const summaryParagraphs = post.summary.split("\n");
+  for (const paragraph of summaryParagraphs) {
+    const p = document.createElement("p");
+    p.textContent = paragraph;
+    summary.appendChild(p);
+  }
+  const contentElement = document.createElement("md-block");
+  contentElement.textContent = post.content;
+
+  postContainer.appendChild(header);
+  postContainer.appendChild(summary);
+  postContainer.appendChild(contentElement);
+}
