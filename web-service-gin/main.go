@@ -19,6 +19,7 @@ var ctx = context.TODO()
 func main() {
 
   client := utils.DBConnect()
+
   // access the collection
   collection = client.Database("blogs").Collection("posts")
   router := gin.Default()
