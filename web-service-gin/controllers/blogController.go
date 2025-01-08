@@ -43,6 +43,7 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
       "tags": parsedPost.Metadata.Tags,
       "nutshell": parsedPost.Metadata.Nutshell,
       "readtime": parsedPost.Metadata.ReadTime,
+      "topic": parsedPost.Metadata.Topic,
       "content": parsedPost.Content,
       "summary": parsedPost.Summary,
     },

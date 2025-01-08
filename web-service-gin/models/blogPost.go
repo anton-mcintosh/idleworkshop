@@ -12,6 +12,7 @@ type BlogPost struct {
   Tags    []string `json:"tags" bson:"tags"`
   Nutshell string `json:"nutshell" bson:"nutshell"`
   ReadTime string `json:"readtime" bson:"readtime"`
+  Topic   string `json:"topic" bson:"topic"`
   Summary string `json:"summary" bson:"summary"`
   Content string `json:"content" bson:"content"`
 }
