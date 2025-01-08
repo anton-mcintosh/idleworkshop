@@ -1,4 +1,4 @@
-package controllers
+package controller
 
 import (
   "context"
@@ -45,8 +45,8 @@ func CreatePost(c *gin.Context, collection *mongo.Collection, ctx context.Contex
       "readtime": parsedPost.Metadata.ReadTime,
       "content": parsedPost.Content,
       "summary": parsedPost.Summary,
-      "date" : primitive.NewDateTimeFromTime(time.Now()),
     },
+    "$setOnInsert": bson.M{"date": primitive.NewDateTimeFromTime(time.Now())},
   }
 
   options := options.Update().SetUpsert(true)
