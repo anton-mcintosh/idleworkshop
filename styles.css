@@ -63,9 +63,10 @@ body {
   height: 145px;
 }
 
-.title {
+.page-title {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  color: #22092C;
 }
 
 /* Navigation Styling */
@@ -164,16 +165,20 @@ body {
 }
 .blog-preview .nutshell {
   text-align: center;
-  gap: 1rem;
+  font-weight: bold;
+  padding: 2rem;
+  color: var(--link-color);
 }
 .blog-preview h2 {
   margin-bottom: 0.5rem;
+  color: #D6CFB4;
 }
 .blog-preview p {
   margin-bottom: 0.5rem;
   align-items: center;
   justify-content: space-between;
   font-size: 1.2rem;
+  color: #D6CFB4;
 }
 .blog-preview footer {
   display: flex;

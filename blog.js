@@ -44,7 +44,7 @@ async function fetchAndDisplayPosts() {
       const clockIcon = document.createElement("i");
       clockIcon.classList.add("fas", "fa-clock");
       const readTimeText = document.createElement("span");
-      readTimeText.textContent = ` ${post.readTime}`;
+      readTimeText.textContent = ` ${post.readtime}`;
       readTimeContainer.appendChild(clockIcon);
       readTimeContainer.appendChild(readTimeText);
 
