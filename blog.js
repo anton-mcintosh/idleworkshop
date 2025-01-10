@@ -118,6 +118,9 @@ async function fetchAndDisplayPosts() {
 document.addEventListener("DOMContentLoaded", fetchAndDisplayPosts);
 
 function displayPost(post) {
+  const blogPost = document.createElement("div");
+  blogPost.classList.add("blog-post");
+
   const postContainer = document.getElementById("posts-container");
   postContainer.innerHTML = "";
 
@@ -143,7 +146,7 @@ function displayPost(post) {
   const clockIcon = document.createElement("i");
   clockIcon.classList.add("fas", "fa-clock");
   const readTimeText = document.createElement("span");
-  readTimeText.textContent = ` ${post.readTime}`;
+  readTimeText.textContent = ` ${post.readtime}`;
   readTimeContainer.appendChild(clockIcon);
   readTimeContainer.appendChild(readTimeText);
 
@@ -167,9 +170,11 @@ function displayPost(post) {
   const contentElement = document.createElement("md-block");
   contentElement.textContent = post.content;
 
-  postContainer.appendChild(header);
-  postContainer.appendChild(summary);
-  postContainer.appendChild(contentElement);
+  blogPost.appendChild(header);
+  blogPost.appendChild(summary);
+  blogPost.appendChild(contentElement);
+
+  postContainer.appendChild(blogPost);
 
   const backButton = document.createElement("button");
   backButton.classList.add("button");
