@@ -130,6 +130,8 @@ body {
   margin: auto;
 }
 .blog-preview {
+  border-bottom: 1px solid var(--tertiary-color);
+  padding-bottom: 1rem;
   width: 90%;
   position: relative;
   margin: auto;
@@ -139,6 +141,9 @@ body {
   justify-content: right;
   text-align: left;
   padding: 2rem;
+}
+.blog-preview:last-child {
+  border-bottom: none;
 }
 .blog-preview header {
   display: flex;

@@ -72,6 +72,7 @@ func GetPosts(c *gin.Context, collection *mongo.Collection, ctx context.Context)
   filter := bson.D{}
   findOptions := options.Find()
   findOptions.SetLimit(20)
+  findOptions.SetSort(bson.D{{"date", -1}})
 
   // decode results
   // NTFS: To decode a single object, use the decode() method. For multiple documents, need to iterate over the cursor and decode each.
