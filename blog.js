@@ -10,6 +10,7 @@ async function fetchAndDisplayPosts() {
     console.log("here is the data", data); // debug
 
     const posts = data.posts;
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     if (!Array.isArray(posts)) {
       throw new Error("Posts is not an array.");
